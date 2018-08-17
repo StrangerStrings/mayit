@@ -12,9 +12,6 @@ import WelcomePage from './components/WelcomePage'
 import PlayingPage from './components/PlayingPage'
 import Header from './components/Header'
 
-
-
-
 import configureStore from './redux/configureStore'
 
 

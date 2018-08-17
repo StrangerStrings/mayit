@@ -168,6 +168,7 @@ class PlayingPage extends React.Component {
     playSound = ([soundLocation, soundMultiplier], volume) => {
 
         let audio1 = new Audio('./sounds/' + soundLocation + '1.wav')
+        // let audio1 = new Audio('https://instaud.io/2z8a')
         audio1.volume = volume
         audio1.play();
 
