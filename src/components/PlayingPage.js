@@ -167,14 +167,14 @@ class PlayingPage extends React.Component {
     
     playSound = ([soundLocation, soundMultiplier], volume) => {
 
-        let audio1 = new Audio('./sounds/' + soundLocation + '1.wav')
+        let audio1 = new Audio('./sounds/' + soundLocation + '1.mp3')
         // let audio1 = new Audio('https://instaud.io/2z8a')
         audio1.volume = volume
         audio1.play();
 
         if(soundMultiplier >= 2){
             setTimeout(()=>{
-                let audio2 = new Audio('./sounds/' + soundLocation + '2.wav')
+                let audio2 = new Audio('./sounds/' + soundLocation + '2.mp3')
                 audio2.volume = volume
                 audio2.play()
             },800)
@@ -182,7 +182,7 @@ class PlayingPage extends React.Component {
 
         if(soundMultiplier >= 3){
             setTimeout(() => {
-                let audio3 = new Audio('./sounds/' + soundLocation + '3.wav')
+                let audio3 = new Audio('./sounds/' + soundLocation + '3.mp3')
                 audio3.volume = volume
                 audio3.play()
             },1600)
@@ -217,18 +217,18 @@ class PlayingPage extends React.Component {
                 }))
             }
             if (this.state.setsCount > this.props.CR[this.state.interval].setsAmount){
-                console.log('sets over limit')
                 this.setState({breakBool:false})
                 return
             }
-            const soundUrl = this.state.breakBool ? './sounds/activityTing.wav' : './sounds/breakTing.wav'
-            // const audio4 = new Audio(soundUrl)
+
+            const soundUrl = this.state.breakBool ? './sounds/ting1.mp3' : './sounds/ding.mp3'
+            const audio4 = new Audio(soundUrl)
             this.setState((prev) => ({
                 breakBool: !prev.breakBool 
             }))
             this.setsBoundaryCalc()
             console.log(soundUrl)
-            // audio4.play()
+            audio4.play()
         }
     }
 
