@@ -1,0 +1,159 @@
+.header-container{
+    width:100%;
+    position: fixed;
+    background-color: $light;
+    z-index: 5;
+    &.playing{
+        background-color: $dark;
+        .logo h1{
+            color: $light;
+        }
+    }
+}
+.header{
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 9rem;
+    width: 100%;
+    max-width: 100rem;
+    margin: 0 auto;
+    padding: 0 4rem;
+
+}
+
+
+
+
+
+.logo{
+    display: flex;
+    justify-content: space-between;
+    transition: flex-grow 1s;
+    &.welcome{
+        flex-grow: 500;
+        min-width: 69rem;
+    }
+    &.settings, &.playing{
+        flex-grow: 1;
+    }
+}
+
+
+.logo-partial{
+    h1, h5{
+        display: inline-block;
+        text-transform: lowercase;
+        overflow: hidden;
+    }
+    h1{
+        font-family: $title;
+        font-size: 370%;
+        // line-height: 1rem;
+        // padding-top: 1rem;
+    }
+    h5{
+        font-family: $serif;
+        font-size: 130%;
+        padding: 0 0 1.5rem 0.2rem;
+        transition: max-width 1s;
+    }
+    &.welcome{
+        h5{max-width: 10rem;}
+    }
+    &.settings, &.playing{
+        h5{max-width: 0;}
+    }
+}
+    
+
+
+
+
+
+
+
+.title-div{
+    transition: flex 1s ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.welcome{
+        flex: 1 0 0;
+    }
+    &.settings{
+        flex: 500 0 0;
+    }
+}
+
+.title-input{
+    display: none;
+    &.settings{
+        display: inline-block;
+    }
+    background-color: $light;
+    color: $dark;
+    border: none;
+    text-align: center;
+    padding-bottom: 0.3rem;
+    height: 5rem;
+    width: 34rem;
+    font-size: 230%;
+    margin-right: -11rem;
+    &:hover{
+        border-bottom: solid 0.3rem $dark;
+        padding-bottom: 0rem;
+    }
+    &:focus{
+        color: $white;
+        font-weight: 100;
+    }
+    &::placeholder{
+        color: $greyish;
+        font-size: 75%;
+        letter-spacing: 0.5rem;
+    }
+    &::selection{
+        // background-color: $light;
+    }
+}
+
+
+
+.title-display{
+    color: $dark;
+    margin-right: -11rem;
+}
+
+
+
+
+
+
+
+
+.back-button, .stop-button{
+    cursor: pointer;
+}
+
+.back-button{
+    height: 3.7rem;
+    background-color: $dark;
+    border-radius: 50%;
+    &.welcome{
+        width: 0;
+        transition: width 0.4s 0.15s;
+    }
+    &.settings{
+        width: 3.7rem;
+        transition: width 0.5s 0.5s;
+    }
+}
+
+.stop-button{
+    height: 3.7rem;
+    width: 3.7rem;
+    background-color: $light;
+    border-radius: 50%;
+}
+

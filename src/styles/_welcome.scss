@@ -1,0 +1,230 @@
+.welcome-page{
+    height:100vh;
+    max-height:100vh;
+    padding: 10rem 0 4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.create-template{
+    flex: 0 0  8.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem 2rem; 
+    border: solid 0.4rem $dark;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem 0 $dark;
+    box-shadow: 0 0 3rem -0.4rem $dark;
+    box-shadow: $box-shadow-main;
+    input{
+        background-color: $light;
+        color: $dark;
+        text-align: center;
+        border: none;
+        // padding-left: 0.8rem;
+        padding-bottom: 0.2rem;
+        font-size: 160%;
+        height: 3rem;
+        width: 4.3rem;
+        &:hover{
+            border-bottom: solid 0.2rem $dark;
+            padding-bottom: 0rem;
+        }
+    }
+    h4{
+        display: none;
+        font-family: $serif;
+    }
+    p{
+        margin: 0.4rem 4.5rem 0 1.9rem;
+        font-size: 110%;
+        &.times{
+            margin: 0rem 2.6rem 0 3rem;
+            font-size: 135%;
+        }
+    }
+    button{
+        order: 5;
+        margin-bottom: 0.2rem;
+    }
+    .select-container{
+        font-size: 152%;
+        margin-bottom: 0.1rem;
+    }
+}
+
+.description-container{
+    flex: 1 0 30rem;
+    padding-top: 1.2rem;
+}
+
+.input-intervals{
+    &:hover ~ .description-container h4{font-size: 0;}
+    &:hover ~ .description-container .description-intervals{display: inline; font-size:100%;}
+    &:focus ~ .description-container .description-intervals{display: inline;}
+}
+.input-durations{
+    &:hover ~ .description-container h4{font-size: 0;}
+    &:hover ~ .description-container .description-durations{display: inline; font-size:100%;}
+    &:focus ~ .description-container .description-durations{display: inline;}
+}
+.select-container{
+    &:hover ~ .description-container h4{font-size: 0;}
+    &:hover ~ .description-container .description-sounds{display: inline; font-size:100%;}
+    &:focus ~ .description-container .description-sounds{display: inline;}
+}
+.button-create{
+    &:hover ~ .description-container h4{font-size: 0;}
+    &:hover ~ .description-container .description-create{display: inline; font-size:100%;}
+    &:focus ~ .description-container .description-create{display: inline;}
+}
+
+
+
+
+
+.saves-header{
+    flex: 0 0 3.6rem;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0rem 1rem;
+    margin-top: 1.5rem;
+    h4{
+        font-size: 102%;
+        font-weight: 500;    
+    }
+}
+.ordering-div{
+    display: flex;
+    align-items: center;
+    h5{
+        display: inline;
+        padding: 0 0.8rem 0 0;
+    }
+    button{
+        font-size: 70%;
+        color: $dark;
+        border-radius: 0.9rem;
+        background-color: $light;
+        border: solid 0.2rem $dark;
+        box-shadow: 0 0 0.5rem 0 $dark;
+        box-shadow: $box-shadow-small;
+        width: 6rem;
+        height: 2.2rem;
+        margin: 0 0.5rem 0 0;
+        text-align: left;
+        &:hover{
+            font-weight: 600;
+        }
+        p{
+            display: inline;
+            margin-left: 0.4rem;
+        }
+    }  
+}
+
+
+
+
+.bottom-buffer{
+    flex: 200 50 0;
+}
+
+
+.saves-list{
+    flex-grow: 1;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    border: solid 0.4rem $dark;
+    box-shadow: 0 0 1rem 0 $dark;
+    box-shadow: 0 0 3rem -0.4rem $dark;
+    box-shadow: $box-shadow-main;
+    border-radius: 2rem;
+    > :last-child{
+        border-bottom: none;
+    }
+    > h5{
+        padding: 2.3rem;
+        font-size: 100%;
+        font-weight: 100;
+    }
+    &:hover{
+        overflow-y: scroll;
+        .routine-loader{
+            padding-right: 0.8rem;
+        }
+    }
+}
+
+
+
+
+
+.routine-loader{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: solid 0.2rem $dark;
+    h4{
+        font-family: $serif;
+        display: none;
+    }
+    p{
+        margin: 0 0.5rem;
+    }
+    h3{
+        flex-basis:30rem;
+        order:-2;
+        font-family: $thin;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+
+        // color: $white;
+    }
+    h5{
+        font-weight: 300;
+        font-size: 100%;
+    }
+    .buffer{
+        flex-grow:1;
+    }
+    button{
+        width: 2rem;
+        height: 2rem;
+        margin-left: 0.5rem;
+        background-color: $light;
+    }
+    &:hover{
+        h3{
+            font-weight: 600;
+            // letter-spacing: 0.1rem;
+        }
+        h5{
+            font-weight: 600;
+            // font-size: 103%;
+        }
+        button{
+            background-color: $dark;
+        }
+    } 
+}
+
+.description-container-2{
+    flex-basis: 15rem;
+    order: -1;
+    text-align: right;
+    padding-bottom: 0.3rem;
+}
+
+.button-delete:hover ~ .description-container-2 .description-delete{
+    display: inline;}
+.button-load:hover ~ .description-container-2 .description-load{
+    display: inline;}
+
+
