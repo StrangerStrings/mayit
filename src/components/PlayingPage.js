@@ -175,7 +175,7 @@ class PlayingPage extends React.Component {
         if(soundMultiplier >= 2){
             setTimeout(()=>{
                 let audio2 = new Audio('./sounds/' + soundLocation + '2.mp3')
-                audio2.volume = volume
+                audio2.volume = volume;
                 audio2.play()
             },800)
         }
@@ -221,7 +221,7 @@ class PlayingPage extends React.Component {
                 return
             }
 
-            const soundUrl = this.state.breakBool ? './sounds/ting1.mp3' : './sounds/ding.mp3'
+            const soundUrl = !this.state.breakBool ? './sounds/ting1.mp3' : './sounds/ding.mp3'
             const audio4 = new Audio(soundUrl)
             this.setState((prev) => ({
                 breakBool: !prev.breakBool 

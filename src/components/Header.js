@@ -18,7 +18,7 @@ class Header extends React.Component {
                         
                         <div className='back-button welcome'></div>
                         <div className="title-div welcome">
-                            <input type='text' className='title-input welcome' /> 
+                            {/* <input type='text' className='title-input welcome' />  */}
                         </div>
                         <Logo page='welcome'/>
 

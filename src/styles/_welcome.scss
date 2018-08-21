@@ -1,7 +1,7 @@
 .welcome-page{
     height:100vh;
     max-height:100vh;
-    padding: 10rem 0 4rem;
+    padding: 10rem 0 2.5rem;
     display: flex;
     flex-direction: column;
 }
@@ -137,6 +137,7 @@
 
 
 .saves-list{
+    position: relative;
     flex-grow: 1;
     overflow-y: hidden;
     overflow-x: hidden;
@@ -145,7 +146,7 @@
     box-shadow: 0 0 3rem -0.4rem $dark;
     box-shadow: $box-shadow-main;
     border-radius: 2rem;
-    > :last-child{
+    div > :last-child{
         border-bottom: none;
     }
     > h5{
@@ -155,7 +156,7 @@
     }
     &:hover{
         overflow-y: scroll;
-        .routine-loader{
+        .routine-loader,.import-area{
             padding-right: 0.8rem;
         }
     }
@@ -228,3 +229,85 @@
     display: inline;}
 
 
+
+
+
+
+
+//import - export
+
+.routine-loader{
+    form{
+        button{
+            // position: absolute;
+            // width:2.5rem;
+            // height: 2.5rem;
+            background-color: $dark;
+            // top: -2rem;
+            // right: 3rem;
+        }
+        textarea{
+            overflow: hidden;
+            max-width: 0;
+            max-height: 0;
+            border: 0.1px solid $light; 
+            padding: 0;
+        }
+    }
+}
+
+
+.saves-header.import-export{
+    button{
+        font-size: 80%;
+        text-align: center;
+    }
+    .selected{
+        background-color: $dark;
+        color: $white;
+        color: $light;
+        font-weight: 600;
+    }
+    h4{
+        flex-grow: 1;
+        text-align: right;
+    }
+}
+.routine-loader.export-message{
+    p{
+        font-size:93%;
+        font-weight: 400;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+
+.import-area{
+    padding: 1.5rem 2rem 3.5rem;
+    p{
+        text-align: center;
+        font-size: 114%;
+        font-weight: 300;
+    }
+    form{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 6rem;
+    }
+    input{
+        background-color: $light;
+        color: $white;
+        border: 0.2rem solid $dark;
+        border-radius: 0.7rem;
+        height: 3rem;
+        width: 27rem;
+        margin-right: 2rem;
+    }
+    .error{
+        font-size: 75%;
+        margin-top: -2.5rem;
+    }
+
+}

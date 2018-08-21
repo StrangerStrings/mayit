@@ -1,6 +1,11 @@
 const currentRoutineDefaultState = [
-    { title: '', endSound: 'ting x1', endVolume: 2, totalDuration: 4, defaultDuration: 2, defaultSound: 'gong x1' },
-    { name: 'meditation', duration: 1, sound: 'ting x3', volume: 2 ,  spokenWords:true, splitInterval: true, onDuration: 40, offDuration: 20, setsAmount: 3},
+    { dateCreated:1534661397420, defaultDuration:"4", defaultSound:"bell x1", endSound:"ting x3" ,endVolume:"1" ,intervals:5, title:"smoothly" ,totalDuration:15 },
+    { name: 'crescendo breathing', duration: 4, sound: 'bell x1', volume: 1 ,  spokenWords:false, splitInterval: false, onDuration: 40, offDuration: 20, setsAmount: 4},
+    { name: 'downwards', duration: 4, sound: 'bell x1', volume: 1 ,  spokenWords:false, splitInterval: false, onDuration: 40, offDuration: 20, setsAmount: 4},
+    { name: 'crescendo breathing', duration: 4, sound: 'bell x1', volume: 1 ,  spokenWords:false, splitInterval: false, onDuration: 40, offDuration: 20, setsAmount: 4},
+    { name: 'crescendo breathing', duration: 4, sound: 'bell x1', volume: 1 ,  spokenWords:false, splitInterval: false, onDuration: 40, offDuration: 20, setsAmount: 4},
+    { name: 'crescendo breathing', duration: 4, sound: 'bell x1', volume: 1 ,  spokenWords:false, splitInterval: false, onDuration: 40, offDuration: 20, setsAmount: 4},
+
     { name: 'downward dog', duration: 1, sound: 'gong x3', volume: 2, spokenWords:true,  splitInterval: false, onDuration: 40, offDuration: 20, setsAmount: 3},
     // { name: 'mad chanting', duration: 1, sound: 'gong x2', volume: 2 },
     // { name: 'downward cat', duration: 1, sound: 'bell x3', volume: 2 },

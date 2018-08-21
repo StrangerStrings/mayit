@@ -13,26 +13,42 @@ const RoutineLoader = (props) => (
             <h5>{props.routine[0].intervals}</h5>
             <p> activities</p>
             <div className='buffer' ></div>
-            <button className='button-delete'
-            onClick={() => { 
-                props.dispatch(deleteRoutine(props.number))
-                let SR = props.savedRoutines
-                console.log(SR)
-                setTimeout(() => {
-                props.saveToLocal()
-                }, 200)
-             }}>delete</button>
+            
+            {!props.export &&
+                <button className='button-delete'
+                    onClick={() => { 
+                        props.dispatch(deleteRoutine(props.number))
+                        setTimeout(() => {
+                            props.saveToLocal()
+                        }, 200)
+                }}>delete</button>
+            }
 
-            <button className='button-load'
-                onClick={() => {
-                    props.dispatch(loadRoutine(props.routine))
-                    props.history.push('/settings')
+            {!props.export &&
+                <button className='button-load'
+                    onClick={() => {
+                        props.dispatch(loadRoutine(props.routine))
+                        props.history.push('/settings')
                 }}>load</button>
-
+            }
+            
             <div className='description-container-2'>
                 <h4 className='description-delete'>delete</h4>
                 <h4 className='description-load'>load</h4>
             </div>
+            
+            {props.export &&
+            <form className="" onSubmit={(e)=>{
+                e.preventDefault()
+                var copyText = document.getElementsByClassName("toCopy")[props.number-1]
+                console.log(copyText.value)
+                copyText.select()
+                document.execCommand("copy")
+                props.exportDone()
+            }}>
+                <button></button>
+                <textarea name="toCopy" className="toCopy" defaultValue={JSON.stringify(props.routine)}></textarea>
+            </form>}
 
     </div>
 
@@ -42,7 +58,6 @@ const RoutineLoader = (props) => (
 
 
 const mapStateToProps = (state, ownProps) => ({
-    savedRoutines: state.savedRoutines,
     routine: state.savedRoutines[ownProps.number]
 })
 

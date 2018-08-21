@@ -30,33 +30,37 @@ $white:rgb(212, 225, 248);
 $white:rgb(204, 216, 236);
 
 
+// @import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Domine:700|Gravitas+One|Merriweather:900|Spectral:800|Volkhov:700|Vollkorn:900');  
+// @import url('https://fonts.googleapis.com/css?family=Barrio|Chelsea+Market|Flavors|Freckle+Face|Kirang+Haerang|Kranky|Love+Ya+Like+A+Sister|Poor+Story|Ribeye');
+// @import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300|Muli:200,300|Nunito+Sans:200,300,400,500,600|Quicksand:300|Raleway:100,200,300');
+
 // --- fonts ---
 //serifs
-@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Domine:700|Gravitas+One|Merriweather:900|Spectral:800|Volkhov:700|Vollkorn:900');  
+@import url('https://fonts.googleapis.com/css?family=Vollkorn:900');  
 //title font
-@import url('https://fonts.googleapis.com/css?family=Barrio|Chelsea+Market|Flavors|Freckle+Face|Kirang+Haerang|Kranky|Love+Ya+Like+A+Sister|Poor+Story|Ribeye');
+@import url('https://fonts.googleapis.com/css?family=Kirang+Haerang');
 //clean
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300|Muli:200,300|Nunito+Sans:200,300,400,500,600|Quicksand:300|Raleway:100,200,300');
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,500,600');
 
 
-$title: 'Love Ya Like A Sister';   //7      a bit childish
-$title: 'Barrio';                   //7     one with big T
-$title: 'Chelsea Market';           //7     lower case
-$title: 'Ribeye';                   //7     serifs
+// $title: 'Love Ya Like A Sister';   //7      a bit childish
+// $title: 'Barrio';                   //7     one with big T
+// $title: 'Chelsea Market';           //7     lower case
+// $title: 'Ribeye';                   //7     serifs
 $title: 'Kirang Haerang';           //7 bigger font
 
-$serif: 'Volkhov';      //too serious
-$serif: 'Spectral';
-$serif: 'Merriweather';
-$serif: 'Gravitas One';      //too much
-$serif: 'Domine';
-$serif: 'Abril Fatface';
+// $serif: 'Volkhov';      //too serious
+// $serif: 'Spectral';
+// $serif: 'Merriweather';
+// $serif: 'Gravitas One';      //too much
+// $serif: 'Domine';
+// $serif: 'Abril Fatface';
 $serif: 'Vollkorn';         //good
 
-$thin: 'Muli';          //5
-$thin: 'Montserrat';    //5
-$thin: 'Quicksand';     //modern-thin
-$thin: 'Raleway';
+// $thin: 'Muli';          //5
+// $thin: 'Montserrat';    //5
+// $thin: 'Quicksand';     //modern-thin
+// $thin: 'Raleway';
 $thin: 'Nunito Sans';   //good-simple
 
 
