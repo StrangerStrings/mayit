@@ -78,6 +78,8 @@
     &:focus ~ .description-container .description-sounds{display: inline;}
 }
 .button-create{
+    @extend %icon-button;
+
     &:hover ~ .description-container h4{font-size: 0;}
     &:hover ~ .description-container .description-create{display: inline; font-size:100%;}
     &:focus ~ .description-container .description-create{display: inline;}
