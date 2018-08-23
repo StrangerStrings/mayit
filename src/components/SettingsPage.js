@@ -5,7 +5,6 @@ import {isTitleInUse, stndrdth} from '../functions.js'
 import Select from 'react-select'
 import IntervalEditor from './IntervalEditor1.js'
 import {options} from './IntervalEditor1.js'
-import Icon from './Icon'
 import FontAwesome from 'react-fontawesome';
 // import faGoogle from '@fortawesome/fontawesome-free-brands/faGoogle';
 var saveErrorTimer
@@ -140,17 +139,13 @@ class SettingsPage extends React.Component {
                                         this.props.history.push('/playing')
                                     }, 350)
                                     
-                                }}>
-                                  <Icon name="play"/>
-                                </button>
+                                }}/>
                             </div>
 
                             <div className='save-button-holder'>
                                 <button  className='button-save' onClick={()=>{
                                     this.saveButtonFunction()
-                                }} >
-                                  <Icon name="floppy-disk"/>
-                                </button>
+                                }} />
                                 {/* <div className='save-faller'></div> */}
                             </div>
 

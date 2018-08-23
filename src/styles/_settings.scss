@@ -452,8 +452,6 @@ input::selection{
 }
 
 .button-play{
-    @extend %icon-button;
-
     position: absolute;
     width: 6rem;
     height: 6rem;
@@ -483,8 +481,6 @@ input::selection{
 
 
 .button-save{
-    @extend %icon-button;
-
     position: absolute;
     z-index:1;
     width: 4rem;
