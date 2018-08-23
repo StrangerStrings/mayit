@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { editInterval } from '../redux/actions'
 import Logo from './Logo.js'
-import Icon from './Icon'
 
 class Header extends React.Component {
 
@@ -33,7 +32,7 @@ class Header extends React.Component {
                         {/* <div className='play-expander'></div> */}
                         <div className='back-button settings' onClick={()=>{
                             this.props.history.push('/')
-                        }}><Icon name="arrow-left" /></div>
+                        }}></div>
                         <div className="title-div settings">
                             <input type='text' className='title-input' placeholder='title' value={this.props.currentRoutine[0].title}
                                 onChange={(e) => {
