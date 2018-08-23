@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Select from 'react-select'
+import Icon from './Icon'
 
 import { loadRoutine, sort, sortBy, loadLocalRoutines } from '../redux/actions'
 import { createTemplate } from '../functions.js'
@@ -47,7 +48,7 @@ class WelcomePage extends React.Component {
                     }}
                     
                     />
-                <button className='button-create'></button>
+                <button className='button-create'><Icon name="file-empty" /></button>
                 <div className='description-container'>
                     <h4 className='description-intervals'>how many?</h4>    
                     <h4 className='description-durations'>how long?</h4>

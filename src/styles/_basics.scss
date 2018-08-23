@@ -31,6 +31,16 @@ button{
     font-size: 0;
 }
 
+%icon-button {
+  padding: 0.8rem;
+
+  svg {
+    height: 100%;
+    width: 100%;
+    fill: $white;
+  }
+}
+
 h1,h2,h3,h4,h5,h6{
   margin:0;
 }

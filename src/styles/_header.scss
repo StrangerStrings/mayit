@@ -137,6 +137,8 @@
 }
 
 .back-button{
+    @extend %icon-button;
+
     height: 3.7rem;
     background-color: $dark;
     border-radius: 50%;
