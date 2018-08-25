@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { loadRoutine, deleteRoutine } from '../redux/actions';
 import { saveToLocal } from '../functions'
-
+import Icon from './Icon.js'
 
 const RoutineLoader = (props) => (
     
@@ -21,7 +21,7 @@ const RoutineLoader = (props) => (
                         setTimeout(() => {
                             props.saveToLocal()
                         }, 200)
-                }}>delete</button>
+                }}><Icon name='delete'/></button>
             }
 
             {!props.export &&
@@ -29,7 +29,7 @@ const RoutineLoader = (props) => (
                     onClick={() => {
                         props.dispatch(loadRoutine(props.routine))
                         props.history.push('/settings')
-                }}>load</button>
+                }}><Icon name='arrow'/></button>
             }
             
             <div className='description-container-2'>
@@ -46,7 +46,7 @@ const RoutineLoader = (props) => (
                 document.execCommand("copy")
                 props.exportDone()
             }}>
-                <button></button>
+                <button><Icon name='export'/></button>
                 <textarea name="toCopy" className="toCopy" defaultValue={JSON.stringify(props.routine)}></textarea>
             </form>}
 

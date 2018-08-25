@@ -5,6 +5,7 @@ import { } from '../redux/actions'
 import { minuteS } from '../functions'
 
 import Clock from './Clock.js'
+import Icon from './Icon.js'
 import { throws } from 'assert';
 
 
@@ -65,12 +66,16 @@ class PlayingPage extends React.Component {
                             <button onClick={() => {
                                 clearInterval(this.timer)
                                 this.setState({ paused: true })
-                            }}>pause</button>
+                            }}>
+                            <Icon name='pause'/>
+                            </button>
                             :
                             <button onClick={() => {
                                 this.timer = setInterval(this.tick, 1000)
                                 this.setState({ paused: false })
-                            }}>play</button>
+                            }}>
+                            <Icon name='play'/>
+                            </button>
                         }
                     </div>
 
@@ -117,7 +122,7 @@ class PlayingPage extends React.Component {
 
     startRoutine = () => {     
         this.setState({interval:1})
-        this.playSound(this.props.CR[this.state.interval].sound.split(' x'), this.props.CR[this.state.interval].volume)
+        this.playSound(this.props.CR[this.state.interval].sound.split(' x'))
         setTimeout(()=>{this.setState({minute:1})},50)
         this.timer = setInterval(this.tick,1000)
     }
@@ -153,29 +158,27 @@ class PlayingPage extends React.Component {
             interval: prevState.interval + 1,
             breakBool: false
         }))
-        this.playSound(this.props.CR[this.state.interval].sound.split(' x'), this.props.CR[this.state.interval].volume)
+        this.playSound(this.props.CR[this.state.interval].sound.split(' x'))
     }
 
     endOfRoutine = () => {
         clearInterval(this.timer)
         this.setState({ countdown: 'end' })
-        this.playSound(this.props.CR[0].endSound.split(' x'), this.props.CR[0].endVolume)
+        this.playSound(this.props.CR[0].endSound.split(' x'))
         setTimeout(() => {
             this.props.history.push('/settings')
         }, 3000)
     }
     
-    playSound = ([soundLocation, soundMultiplier], volume) => {
+    playSound = ([soundLocation, soundMultiplier]) => {
 
         let audio1 = new Audio('./sounds/' + soundLocation + '1.mp3')
         // let audio1 = new Audio('https://instaud.io/2z8a')
-        audio1.volume = volume
         audio1.play();
 
         if(soundMultiplier >= 2){
             setTimeout(()=>{
                 let audio2 = new Audio('./sounds/' + soundLocation + '2.mp3')
-                audio2.volume = volume;
                 audio2.play()
             },800)
         }
@@ -183,17 +186,16 @@ class PlayingPage extends React.Component {
         if(soundMultiplier >= 3){
             setTimeout(() => {
                 let audio3 = new Audio('./sounds/' + soundLocation + '3.mp3')
-                audio3.volume = volume
                 audio3.play()
             },1600)
         } 
 
         if (!this.state.countdown && this.props.CR[this.state.interval].spokenWords){
-            this.speechSynthesis(soundMultiplier*900, volume)
+            this.speechSynthesis(soundMultiplier*900)
         }
     }
 
-    speechSynthesis = (delay,volume) => {
+    speechSynthesis = (delay) => {
         setTimeout(() => {
             var spokenWords = new SpeechSynthesisUtterance(this.props.CR[this.state.interval].name);
             spokenWords.voice = this.voices[25];
@@ -251,17 +253,8 @@ class PlayingPage extends React.Component {
             clearInterval(this.countdown)
             this.startRoutine()
             this.voices = speechSynthesis.getVoices();
-            
-            // this.setState({ countdown: 3 })
-            // var msg = new SpeechSynthesisUtterance();
-
-            // msg.voice = this.voices[this.state.vArrayBest[this.state.vocal]];
-            // console.log(this.voices[this.state.vArrayBest[this.state.vocal]])
-            // msg.text = this.state.wordsToSay[this.state.vocal];
-            // speechSynthesis.speak(msg);
-            // this.setState((prevState) => ({ vocal: prevState.vocal + 1 }))
         }
-    }, 1000)
+    }, 100)
 
     
     

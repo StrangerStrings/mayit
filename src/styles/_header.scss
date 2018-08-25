@@ -137,16 +137,23 @@
 }
 
 .back-button{
-    height: 3.7rem;
-    background-color: $dark;
-    border-radius: 50%;
+    @extend %icon-button;
+    height: 4.2rem;
+    // background-color: $dark;
+    // border-radius: 50%;
     &.welcome{
         width: 0;
         transition: width 0.4s 0.15s;
     }
     &.settings{
-        width: 3.7rem;
+        width: 4.2rem;
         transition: width 0.5s 0.5s;
+    }
+    &.playing{
+        width: 4.2rem;
+        svg{
+            fill: $light;
+        }
     }
 }
 

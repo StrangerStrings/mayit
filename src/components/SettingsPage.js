@@ -6,6 +6,7 @@ import Select from 'react-select'
 import IntervalEditor from './IntervalEditor1.js'
 import {options} from './IntervalEditor1.js'
 import FontAwesome from 'react-fontawesome';
+import Icon from './Icon.js'
 // import faGoogle from '@fortawesome/fontawesome-free-brands/faGoogle';
 var saveErrorTimer
 
@@ -21,6 +22,8 @@ class SettingsPage extends React.Component {
         for (let i = 1; i < (this.props.currentRoutine.length); i++){
             IntervalEditorArray.push(i)
         }
+
+        const addButtonClass = this.state.addCount > -1 && ' add-pressed'
 
 
         return (
@@ -45,15 +48,6 @@ class SettingsPage extends React.Component {
                                 onChange={(e) => {
                                     this.props.dispatch(editInterval(0, 'endSound', e.value))
                                 }} />
-                            <input className='input-volume'
-                                type='number' name='endVolume' 
-                                min={1} max={3}
-                                value={this.props.currentRoutine[0].endVolume}
-                                onChange={(e) => { 
-                                    this.props.dispatch(editInterval(0, e.target.name, e.target.value))
-                                }}
-                            /><p>db</p>
-
                         </form>
                     </div>
 
@@ -62,11 +56,11 @@ class SettingsPage extends React.Component {
 
                     <div className='container add-buttons'>
 
-                        <button className='add-button' 
+                        <button className={'add-button ' + addButtonClass} 
                         onMouseDown={() => {
                             this.addCounter = setInterval(()=>{
                                 this.setState((prev)=>({addCount: prev.addCount+1}))
-                            },500)
+                            },700)
                         }}   onMouseUp={()=>{
                             let addAmount = this.state.addCount < 2 ? 1 : this.state.addCount
                             clearInterval(this.addCounter)
@@ -81,18 +75,21 @@ class SettingsPage extends React.Component {
                         }} onMouseLeave={() => {
                             clearInterval(this.addCounter)
                             this.setState({addCount:-1})
-
                         }}
                         >{addCount}</button>
 
                         {!this.state.showAddOptions ? 
                             <button className='show-add-options' onClick={() => {
                                 this.setState({showAddOptions: true})   
-                            }}/> 
+                            }}>
+                            <Icon name='caret'/>
+                            </button> 
                             : 
                             <button className='hide-add-options' onClick={() => {
-                                this.setState({ showAddOptions: false })
-                            }} /> 
+                                this.setState({ showAddOptions: false }) 
+                            }}>
+                            <Icon name='caret'/>
+                            </button> 
                         }
 
                         
@@ -139,13 +136,17 @@ class SettingsPage extends React.Component {
                                         this.props.history.push('/playing')
                                     }, 350)
                                     
-                                }}/>
+                                }}>
+                                <Icon name="play"/>
+                              </button>
                             </div>
 
                             <div className='save-button-holder'>
                                 <button  className='button-save' onClick={()=>{
                                     this.saveButtonFunction()
-                                }} />
+                                }}>
+                                <Icon name="save"/>
+                                </button>
                                 {/* <div className='save-faller'></div> */}
                             </div>
 
@@ -154,19 +155,20 @@ class SettingsPage extends React.Component {
                                 <h4 className='description-save'>save</h4>
                             </div>
 
-                            {(this.state.saveError && !this.props.currentRoutine[0].title) && 
-                            <div className='save-error'>
-                                <p>give it a title</p>
-                                <p>before saving</p>
-                            </div>}
                         </div>
                     </div>
                 </div>  
 
-
-
-
-                <div className='controls'>
+                <div className='save-error-fixed' >
+                    <div className='container' >
+                        {(this.state.saveError && !this.props.currentRoutine[0].title) && 
+                        <div className='save-error'>
+                            <p>give it a title</p>
+                            <p>before saving</p>
+                        </div>}
+                    </div>
+                </div>
+                {/* <div className='controls'>
 
                    <button onClick={() => {
                         console.log(this.props.currentRoutine)
@@ -180,7 +182,7 @@ class SettingsPage extends React.Component {
                         console.log(JSON.parse(localStorage.getItem('savedRoutines')))
                     }} /> <p>log local storage</p>
 
-                </div>
+                </div> */}
                 
 
 
@@ -194,7 +196,7 @@ class SettingsPage extends React.Component {
     state = {
         saveError: false,
         showAddOptions: false,
-        addCount: 0,
+        addCount: -1,
         whereToAdd: 1,
     }
 

@@ -34,6 +34,9 @@
             border-bottom: solid 0.2rem $dark;
             padding-bottom: 0rem;
         }
+        &:focus{
+            color: $white;
+        }
     }
     h4{
         display: none;
@@ -50,6 +53,10 @@
     button{
         order: 5;
         margin-bottom: 0.2rem;
+        @extend %icon-button;
+        background-color: $light;
+        height: 3.3rem;
+        width: 2.5rem;
     }
     .select-container{
         font-size: 152%;
@@ -107,6 +114,8 @@
         padding: 0 0.8rem 0 0;
     }
     button{
+        @extend %icon-button;
+        padding: 0 0 0 0.6rem;
         font-size: 70%;
         color: $dark;
         border-radius: 0.9rem;
@@ -118,11 +127,23 @@
         height: 2.2rem;
         margin: 0 0.5rem 0 0;
         text-align: left;
+        h6{
+            font-size: 100%;
+            font-weight: 400;
+            color: $dark;
+            display: inline;
+        }
         &:hover{
             font-weight: 600;
         }
         p{
             display: inline;
+            margin-left: 0.4rem;
+        }
+        div{
+            display: inline-block;
+            width: 1rem;
+            height: 0.7rem;
             margin-left: 0.4rem;
         }
     }  
@@ -198,20 +219,29 @@
     button{
         width: 2rem;
         height: 2rem;
-        margin-left: 0.5rem;
+        margin-left: 0.6rem;
         background-color: $light;
+        svg{fill: $light;
+            width: 200%;}
+        &.button-delete{
+            padding: 0rem 1.3rem 0.2rem 0rem;
+        }
+        &.button-load{
+            padding: 0rem 1.1rem 0rem 0rem;
+        }
     }
     &:hover{
         h3{
             font-weight: 600;
-            // letter-spacing: 0.1rem;
         }
         h5{
             font-weight: 600;
-            // font-size: 103%;
         }
         button{
-            background-color: $dark;
+            // background-color: $dark;
+        }
+        svg{
+            fill: $dark;
         }
     } 
 }
@@ -239,12 +269,13 @@
 .routine-loader{
     form{
         button{
-            // position: absolute;
-            // width:2.5rem;
-            // height: 2.5rem;
-            background-color: $dark;
-            // top: -2rem;
-            // right: 3rem;
+            background-color: $light;
+            
+        @extend %icon-button;
+            svg{
+                fill: $light;
+                width: 100%;
+            }
         }
         textarea{
             overflow: hidden;
@@ -261,6 +292,7 @@
     button{
         font-size: 80%;
         text-align: center;
+        padding: 0rem 0rem 0rem 0rem;
     }
     .selected{
         background-color: $dark;
@@ -304,6 +336,10 @@
         height: 3rem;
         width: 27rem;
         margin-right: 2rem;
+    }
+    button{
+        @extend %icon-button;
+        background-color: $light;
     }
     .error{
         font-size: 75%;

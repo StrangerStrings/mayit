@@ -6,7 +6,7 @@ import { loadRoutine, sort, sortBy, loadLocalRoutines, saveRoutine } from '../re
 import { createTemplate } from '../functions.js'
 import RoutineLoader from './RoutineLoader.js'
 import { setTimeout } from 'timers';
-
+import Icon from './Icon.js'
 const options = [
     { value: 'gong x1', label: 'gong' },
     { value: 'bell x1', label: 'bell' },
@@ -41,15 +41,15 @@ class WelcomePage extends React.Component {
                     this.props.history.push('/settings')
                 }}
             >
-                <input className='input-intervals' type='number' min={1} defaultValue={4} name='intervals' /><p className='times'>x</p>
-                <input className='input-durations' type='number' min={1} defaultValue={3} name='durations' /><p>minutes  </p>
+                <input className='input-intervals' type='number' min={1} defaultValue={4} name='intervals' onClick={(e)=>{e.target.select()}} /><p className='times'>x</p>
+                <input className='input-durations' type='number' min={1} defaultValue={3} name='durations' onClick={(e)=>{e.target.select()}} /><p>minutes  </p>
                 <Select className='select-container' classNamePrefix='select' isSearchable={false}
-                    options={options} defaultValue={options[0]} onChange={(e)=>{
+                    options={options} defaultValue={options[1]} onChange={(e)=>{
                         currentSound = e.value
                     }}
                     
                     />
-                <button className='button-create'></button>
+                <button className='button-create'><Icon name='arrow'/></button>
                 <div className='description-container'>
                     <h4 className='description-intervals'>how many?</h4>    
                     <h4 className='description-durations'>how long?</h4>
@@ -70,10 +70,11 @@ class WelcomePage extends React.Component {
                         this.props.dispatch(sortBy(true, ascending))
                         this.props.dispatch(sort())
                     }}>
-                    date
+                    <h6>date</h6>
+                    <div>
                     {this.props.savedRoutines[0].sortByDate && (
-                        this.props.savedRoutines[0].ascending ? <p>u</p> : <p>d</p>
-                    )}
+                        this.props.savedRoutines[0].ascending ? <Icon name='up-bit'/> : <Icon name='down-bit'/>
+                    )}</div>
                     </button>
                     
                     <button onClick={() => {
@@ -81,10 +82,11 @@ class WelcomePage extends React.Component {
                         this.props.dispatch(sortBy(false, ascending))
                         this.props.dispatch(sort())
                     }}>
-                    length
+                    <h6>length</h6>
+                    <div>
                     {!this.props.savedRoutines[0].sortByDate && (
-                        this.props.savedRoutines[0].ascending ? <p>u</p> : <p>d</p>
-                    )}
+                        this.props.savedRoutines[0].ascending ? <Icon name='up-bit'/> : <Icon name='down-bit'/>
+                    )}</div>
                     </button>
     
                 </div>
@@ -130,7 +132,7 @@ class WelcomePage extends React.Component {
                         }
                     }}>
                         <input name="importData" type="text" autoComplete="off"></input>
-                        <button></button>
+                        <button><Icon name='import'/></button>
                     </form>
                     {this.state.importError &&
                     <p className='error'>error: please copy and paste exact data using mayit's export button</p>}

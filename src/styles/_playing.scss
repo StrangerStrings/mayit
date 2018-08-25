@@ -121,7 +121,12 @@
     bottom: 3.2rem;
     right: 1.8rem;
     button{
-        background-color: $light;
+        @extend %icon-button;
+        background-color: $dark;
+        padding: 0rem 0rem 0.1rem 0rem;
+        svg{
+            fill: $light;
+        }
     }
 }
 
@@ -154,9 +159,6 @@
     margin: 1rem 15rem;
 }
 
-.rotate{
-    transform: rotate(60deg)
-}
 
 
 .clock-face-1, .clock-face-2{

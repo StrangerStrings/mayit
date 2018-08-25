@@ -44,7 +44,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    padding: 1.3rem 2rem 1.6rem; 
+    padding: 1.3rem 1.3rem 1.6rem 2rem; 
     border-bottom: solid 0.3rem $dark;
     input{
         background-color: $light;
@@ -83,7 +83,7 @@
         &.input-name{
             font-size: 130%;
             font-weight: 100;
-            width: 18rem;
+            width: 21rem;
             margin-right: 0rem;
             margin-top: 0.4rem;
             text-align: left;
@@ -107,31 +107,64 @@
     }
     .button-holder{
         width: 2.5rem;
+        margin-right: 0.6rem;
         text-align: center;
     }
     button{
+        @extend %icon-button;
         width: 2rem;
         height: 2rem;
-        &.button-volume-high {
-            width: 2.5rem;
-        }
-        &.button-volume-low {
-            
-        }
+        background-color: $light;
         &.button-split-on {
+            width: 1.8rem;
+            height: 1.7rem;
+            border: solid 0.3rem $dark;
+            display: inline-block; 
+            position: relative;  
+            div{
+                position:absolute;
+                left:0.5rem;
+                top:0;
+                width: 55%;
+                height: 100%;
+                border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+                background-color: $dark;
+            }         
         }
         &.button-split-off {
-            height: 1.5rem;
-            display: none;            
+            width: 1.8rem;
+            height: 1.7rem;
+            border: solid 0.3rem $dark;
+            display: none; 
+            position: relative;  
+            // padding:0;
+            div{
+                position:absolute;
+                left:0.5rem;
+                top:0;
+                width: 50%;
+                height: 100%;
+                border-left: solid 0.2rem $dark;
+            }         
+            &:hover{
+                div{
+                    border-width: 0.3rem;
+                    left: 0.5rem
+                }
+            }
         }
         &.button-speech-on {
             width: 2.5rem;
+            padding: 0.4rem 0rem 0rem 0rem; 
+            // svg{fill-rule: evenodd;}
         }
         &.button-speech-off {
-            display: none;            
+            display: none;  
+            padding: 0.4rem 0rem 0rem 0rem;            
         }
         &.button-delete{
-            display: none;           
+            display: none; 
+            padding: 0.5rem 0rem 0rem 0rem;          
         }
     }
     &:hover{
@@ -172,6 +205,9 @@ input[type=number]::-webkit-inner-spin-button {
 
 input::selection{
     color:$white;
+    background-color: rgb(153, 150, 184);
+    background-color: rgb(186, 183, 221);
+    background-color: rgb(179, 175, 230);
 }
 
 
@@ -264,7 +300,7 @@ input::selection{
 }
 
 .end-sound{
-    padding: 1.3rem 5.7rem 1.2rem 23rem;
+    padding: 1.3rem 10.7rem 1.2rem 26.1rem;
     border: none !important;
     h5{
         font-size: 99%;
@@ -305,11 +341,17 @@ input::selection{
     box-shadow: 0 0 0.5rem 0 $dark;
     box-shadow: $box-shadow-medium;
     font-size: 200%;
+    font-weight: 600;
     text-align: center;
     padding-bottom: 0.6rem;
     color: $dark;
     &:hover{
-        color:$white;
+        background-color: $dark;
+        color:$light;
+    }
+    &.add-pressed{
+        color: $white;
+        font-weight: 300;
     }
 }
 
@@ -320,36 +362,27 @@ input::selection{
 }
 
 .hide-add-options{
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 1.3rem;
+    width: 1.3rem;
+    padding: 0;
+    background-color: $light;
+    @extend %icon-button;
+    svg{
+        transform: rotate(-90deg);
+    }
 }
 .show-add-options{
     height: 1.3rem;
     width: 1.3rem;
+    padding: 0;
+    background-color: $light;
+    @extend %icon-button;
 }
 
 .add-button-options{
     position: relative;
     line-height: 0;
-    button{
-        position: absolute;
-        right: -3.9rem;
-        bottom: 0.2rem;
-        height: 2rem;
-        width: 2rem;
-        background-color: $light;
-        border: 0.2rem $dark solid;
-        color: $dark;
-        font-size: 100%;
-        p{
-            position: absolute;
-            top: -2.4rem;
-            right: 0.3rem;
-            font-size: 120%;
-            font-weight: 400;
 
-        }
-    }
 
     p{
         display: inline;
@@ -431,7 +464,7 @@ input::selection{
 
 .description-container-3{
     position: absolute;
-    margin: 4.4rem 1.2rem;
+    margin: 5rem 1.1rem;
 }
 
 .save-button-holder:hover ~ .description-container-3 .description-save{
@@ -452,9 +485,17 @@ input::selection{
 }
 
 .button-play{
+    @extend %icon-button;
+    padding: 0.7rem 0.4rem 0.9rem 1rem;
+    border: 0.4rem solid $dark;
+    background-color: $light;
     position: absolute;
     width: 6rem;
     height: 6rem;
+    &:hover{
+        background-color: $dark;
+        svg{fill:$light;}
+    }
 }
 
 .play-expander{
@@ -481,10 +522,21 @@ input::selection{
 
 
 .button-save{
+    @extend %icon-button;
+    background-color: $light;
+    padding: 0rem 0.7rem 0rem 0.8rem;
+    border: 0.4rem solid $dark;
+    svg{
+        fill-rule: evenodd;
+    }
+    &:hover{
+        background-color: $dark;
+        svg{fill:$light;}
+    }
     position: absolute;
     z-index:1;
-    width: 4rem;
-    height: 4rem;
+    width: 4.5rem;
+    height: 4.5rem;
     top:0;
     right:0;
 }
@@ -504,7 +556,7 @@ input::selection{
 
 .save-button-holder{
     position: relative;
-    margin: 1.1rem;
+    margin: 0.6rem;
 }
 
 .save-faller{
@@ -534,12 +586,28 @@ input::selection{
 
 
 
+.save-error-fixed{
+    position: fixed;
+    top:23.4rem;
+    width: 100%;
+    .container{
+        display: flex;
+        justify-content: flex-end;
+        width: 100% !important;
+        height: 0;
+        max-width: 100rem;
+        padding: 0 1.5rem;
+    }
+}
+
 .save-error{
-    position: absolute;
     line-height: 0.3rem;
-    top: 14rem;
-    right: 1.4rem;
+    // top: 14rem;
+    // right: 1.4rem;
     text-align: center;
     font-size: 105%;
     font-weight: 600;
 }
+
+
+

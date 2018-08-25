@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { editInterval } from '../redux/actions'
 import Logo from './Logo.js'
+import Icon from './Icon'
 
 class Header extends React.Component {
 
@@ -16,7 +17,7 @@ class Header extends React.Component {
                 <header className='header-container'>
                     <div className='header'>
                         
-                        <div className='back-button welcome'></div>
+                        <div className='back-button welcome'><Icon name='arrow-left'/></div>
                         <div className="title-div welcome">
                             {/* <input type='text' className='title-input welcome' />  */}
                         </div>
@@ -32,7 +33,7 @@ class Header extends React.Component {
                         {/* <div className='play-expander'></div> */}
                         <div className='back-button settings' onClick={()=>{
                             this.props.history.push('/')
-                        }}></div>
+                        }}><Icon name='arrow-left'/></div>
                         <div className="title-div settings">
                             <input type='text' className='title-input' placeholder='title' value={this.props.currentRoutine[0].title}
                                 onChange={(e) => {
@@ -49,9 +50,9 @@ class Header extends React.Component {
                                 // --- PlayingPage ---
                 <header className='header-container playing'>
                     <div className='header'>
-                        <div className='stop-button' onClick={()=>{
+                        <div className='back-button playing' onClick={()=>{
                             this.props.history.push('/settings')
-                        }}></div>
+                        }}><Icon name='arrow-left'/></div>
                         <div className="title-div settings">
                             {/* <h3 className='title-display' >{this.props.currentRoutine[0].title}</h3> */}
                         </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Select from 'react-select'
 import { removeIntervalAt, editInterval } from '../redux/actions';
+import Icon from './Icon.js'
 
 export const options = [
     { value: 'ting x1', label: 'ting x1' },
@@ -28,18 +29,29 @@ class IntervalEditor extends React.Component {
         return (
             <div className='interval-editor-container'>
                 <div className='interval-editor' >
-                    <input className='input-name' type='text'  autoComplete='off'
+                    <input className='input-name' type='text'  autoComplete='off' onClick={(e)=>{e.target.select()}}
                         placeholder='activity name'    value={this.props.interval.name}
                         onChange={(e) => {
                             this.props.dispatch(editInterval(this.props.number, 'name', e.target.value))
                         }}
                     />
                     <input className='input-duration' type='number' name='duration' onClick={(e)=>{e.target.select()}}
-                    disabled={this.state.splitInterval}
+                    // disabled={this.state.splitInterval}
                     min={1} value={this.props.interval.duration}
                         onChange={(e) => { 
                             this.handleChange(e)
-                            let sa = Math.ceil(e.target.value * ((parseInt(this.props.interval.onDuration) + parseInt(this.props.interval.offDuration)) / 60))
+                            let v = parseInt(this.props.interval.onDuration)
+                            console.log('on-D: ',v)
+                            let w = parseInt(this.props.interval.offDuration)
+                            console.log('off-D: ',w)
+                            let x = v + w
+                            console.log('added: ',x)
+                            let y = (x) / 60
+                            console.log('/ by 60: ', y)
+                            let z = e.target.value / (y)
+
+                            let sa = Math.ceil(z)
+                            // console.log(sa)
                             this.props.dispatch(editInterval(this.props.number, 'setsAmount', sa))
                         }}
                     />
@@ -55,39 +67,7 @@ class IntervalEditor extends React.Component {
                                 this.props.dispatch(editInterval(this.props.number, 'sound', e.value))
                             }}/>
 
-                    <div className='button-holder'>
-                        {this.state.volume == 1 ?
-                        <button className='button-volume-high'
-                        onClick={()=>{
-                            this.setState({ volume: 0.6 })
-                            this.props.dispatch(editInterval(this.props.number, 'volume', 0.6))
-                        }}
-                        ></button>
-                        :
-                        <button className='button-volume-low'
-                        onClick={()=>{
-                            this.setState({ volume: 1 })
-                            this.props.dispatch(editInterval(this.props.number, 'volume', 1))
-                        }}></button>
-                        }
-                    </div>
-
-                    <div className='button-holder'>
-                        {this.state.splitInterval ?
-                        <button className='button-split-on'
-                        onClick={()=>{
-                            this.setState({ splitInterval: false })
-                            this.props.dispatch(editInterval(this.props.number, 'splitInterval', false))
-                        }}
-                        ></button>
-                        :
-                        <button className='button-split-off'
-                        onClick={()=>{
-                            this.setState({ splitInterval: true })
-                            this.props.dispatch(editInterval(this.props.number, 'splitInterval', true))
-                        }}></button>
-                        }
-                    </div>
+       
 
                     <div className='button-holder'>
                         {this.state.spokenWords ?
@@ -95,14 +75,38 @@ class IntervalEditor extends React.Component {
                         onClick={()=>{
                             this.setState({ spokenWords: false })
                             this.props.dispatch(editInterval(this.props.number, 'spokenWords', false))
-                        }}
-                        ></button>
+                        }}>
+                        <Icon name="voice-on"/>
+                        </button>
                         :
                         <button className='button-speech-off'
                         onClick={()=>{
                             this.setState({ spokenWords: true })
                             this.props.dispatch(editInterval(this.props.number, 'spokenWords', true))
-                        }}></button>
+                        }}>
+                        <Icon name="voice-off"/>
+                        </button>
+                        }
+                    </div>
+            
+
+                     <div className='button-holder'>
+                        {this.state.splitInterval ?
+                        <button className='button-split-on'
+                        onClick={()=>{
+                            this.setState({ splitInterval: false })
+                            this.props.dispatch(editInterval(this.props.number, 'splitInterval', false))
+                        }}>
+                        <div></div>
+                        </button>
+                        :
+                        <button className='button-split-off'
+                        onClick={()=>{
+                            this.setState({ splitInterval: true })
+                            this.props.dispatch(editInterval(this.props.number, 'splitInterval', true))
+                        }}>
+                        <div></div>
+                        </button>
                         }
                     </div>
 
@@ -112,8 +116,13 @@ class IntervalEditor extends React.Component {
                             onClick={(e) => { 
                                 e.preventDefault()
                                 this.props.dispatch(removeIntervalAt(this.props.number))
-                        }}></button>
+                        }}>
+                        <Icon name="delete"/>
+                        </button>
                     </div>
+
+
+
 
                     {this.state.splitInterval && 
                     <form className='split-interval'   name='ffff'
@@ -176,7 +185,7 @@ class IntervalEditor extends React.Component {
         sa = parseInt(sa);  onD = parseInt(onD);  offD = parseInt(offD)
         let duration = (sa * (onD + offD))/60
         if (!duration){duration = 0}
-        console.log(duration)
+        // console.log(duration)
         this.props.dispatch(editInterval(this.props.number, 'duration', Math.ceil(duration) ))
     }
 

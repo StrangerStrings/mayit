@@ -6,12 +6,6 @@ export const isTitleInUse = (title, routines) => {
     }
 }
 
-//what does it need to have in that first index?
-// all the details, even stuff for default stuff, like what 'add option' will create.
-// It also needs to have endSound and endVolume
-// it doesn't need to have title, length or intervals
-// add option - just needs defaultDuration and defaultSound, 
-// saved straight from template inputs
 
 export const createTemplate = (intervals, durations, sounds) => {
     let arr = [{
@@ -19,7 +13,6 @@ export const createTemplate = (intervals, durations, sounds) => {
         defaultDuration: durations,
         defaultSound: sounds,
         endSound: sounds,
-        endVolume: 2
     }]
     for (let i=0; i<intervals ;i++){
         let obj = { name: '', duration: durations, sound: sounds, volume: 1,
